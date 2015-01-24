@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script> <!-- this comes after angular -->
+</head>
+
+<body ng-app="MyFirstApp">
+	<h1>test angular nycda</h1>
+
+
+	<div ng-controller="MyFirstController">
+		<!-- anything in this div has access to what is in the scope of this controller -->
+
+<!-- 		<input type="text" ng-model="name">
+		<p>hello, {{ name }}</p> -->
+
+
+
+		<!--                 -->
+		<!-- one way binding -->
+		{{car}} 
+		<span ng-bind="car"></span>
+		<!-- this effect is same as {{}} -->
+		<!-- ng-bind, it can only be changed in controller -->
+		
+		<br/><br/><br/><br/>
+
+
+
+
+
+		<!--                 -->
+		<!-- two way binding -->
+		
+		<input type="text" ng-model="winner"/>
+		<p>{{winner}}</p> <!-- whatever is in winner variable, print out in screen -->
+
+
+		<button ng-click="buttonPressed()"> Press Me</button> <!-- not bound in app.js but bound from here, 2 way binding -->
+
+
+
+		<!-- 				--> 
+		<!-- Repeated stuff -->
+		<div ng-repeat="x in myObjects">
+			<div>{{x}}</div>
+		</div>
+
+		<ul>
+			<li ng-repeat="x in myObjects">{{x}}</li>
+		</ul>
+
+		<ul>
+			<li ng-repeat="x in myObjects">
+				{{ x == 1 }}
+				
+				{{ typeof(x) == 'string' }}
+			</li>
+			<!-- anything inside {{}} is evaluated as expression -->
+		</ul>
+	</div>
+
+</body>
+</html>
