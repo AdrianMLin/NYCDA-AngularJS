@@ -1,0 +1,50 @@
+Assignment 2 (Read the Hints on the bottom before beginning)
+
+Ok this week's assignment is the classic game of Simon. The purpose of this assignment is to get us familiar with the built in directives and services that angular offers.
+
+General Task:
+
+This is a game of memory between the user and computer. User has to repeat the sequence of colors that the computer generates. Every round, a new color is added to the current sequence.
+
+Game Play:
+
+At the start of the game the user is shown a board of four different colors and is prompted with a button to start the game.
+
+Simon goes first and displays a sequence (starting with one) of colors that flash on the screen as well as get displayed on the right hand side in list form.
+
+The user then has to match Simon's sequence by clicking on the corresponding color on the board. When it's the users turn, we display every color they've selected so far on the right hand side of the screen in list form.
+
+If the user's sequence matches Simon's sequence, Simon goes again, but this time adding another color to his existing sequence. Simon's sequence stays the same for every round with the exception of the added color. Simon's color sequence should be generated randomly using Javascript's Math.random function.
+
+If the user fails to match the sequence the game is over and they are prompted to play again, where everything happens again from the beginning.
+
+Specifics:
+
+If it is not the user's turn (ie the game has not started yet, the game has ended or Simon is displaying his sequence) any clicks on the screen should have no effect.
+
+We need a label instructing the user when it's his/her turn and when it's Simon's turn.
+
+If Simon is displaying a sequence that has two colors that are the same in a row there needs to be a flash indicating they they are two seperate events.
+
+No DOM manipulation, no jQuery. Only allowed to user angular built in directives and services.
+
+Hints:
+The key to this assignment is to break it down into smaller bite-size tasks. You don't have to follow this but this was my approach
+
+1) Setup the html document with the angularJS library and do a small hello world example with a basic ng-app and ng-controller to make sure everything is working.
+
+2) Get the board drawn on the screen correctly with the four boxes.
+
+3) Get the colors to change in the right way when the user clicks on a box. (setup your css styles) (one way is to use ng-class or ng-style).
+
+4) After the colors are showing up correctly come up with a way of capturing the colors clicked and saving them. (I would recommend saving them in an array of color objects). After that's working display the array on screen using ng-repeat. ps you might need to google "ng-repeat trackBy" if you're getting ng-repeat errors.
+
+5) From here you can start to work on the Simon part. I would start with doing some basic examples using $timeout and $interval just to see how they behave. You'll need to find a way of stopping the $interval when Simon has finished displaying his sequence.
+
+6) At this point, the rest is making sure your logic matches the gameplay. (here's an example you can play: http://www.freegames.ws/games/kidsgames/simon/simon.htm#)
+
+You're free to use as many controllers, models, directives, divs, spans etc as you want. You're also free to use the $scope method or 'Controller as' syntax we talked about in class. The only rule is no jQuery. I'll hold office hours on Saturday. I'll post the time and location on Canvas if anyone needs help. Check out the video on Canvas for gameplay details.
+
+ Once your done put everything into a zip file and upload it to Canvas.
+
+ Happy Coding guys.

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="monkey">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script> <!-- this comes after angular -->
+	<style>
+		.red {
+			color: red;
+		}
+	</style>
+
+</head>
+<body>
+	<div ng-controller="octopus as o">
+		<h1 ng-bind="o.name"></h1> <!-- * ng-bind is the same as {{}} -->
+		<ul>
+			<li ng-repeat="item in o.list">{{item}}</li>
+		</ul>
+
+
+		<input type="text" ng-model="o.thing">
+		<p>{{o.thing}}</p>
+
+	</div>
+
+
+
+		<!-- ng-bind is slightly faster than {{}} -->
+	<div ng-controller="fox as f">
+		<h1>{{f.name}}</h1> <!-- * ng-bind is the same as {{}} --> 
+		<ul>
+			<div ng-repeat="nestedArray in f.list">
+				<li ng-repeat="item in nestedArray">{{item}}</li>
+			</div>
+		</ul>
+
+		<ul> <!-- you can also ng-repeat through an object -->
+			<li ng-repeat="(k, v) in f.details">his <span style="font-weight: bold">{{k}}</span>  is <span style="font-style: italic">{{v}}</span></li>
+		</ul>
+
+	<!-- 	<p ng-repeat="thing in f.list">
+			the index of {{thing.}}
+		</p> -->
+
+		<button ng-click="f.boom()">boom</button>
+
+
+		<!-- this one doesnt remove from DOM -->
+		<button ng-click="f.showDetails = !f.showDetails">Toggle</button> <!-- see if this is true or false -->
+		<span ng-show="f.showDetails">Show me the details!</span>
+
+
+
+
+		<!-- shows if true -->
+		<h3 ng-if="f.veracity">this is so true!</h3>
+
+
+		<!-- focus and hide! -->
+		<input type="text" ng-focus="f.focusDo = !f.focusDo" ng-blur="f.focusDo = !f.focusDo"> 
+		<span ng-if="f.focusDo">focusDo - focus to hide!</span>
+
+		<br/>
+
+
+		<!-- -->
+		<input type="text" ng-model="f.focusClass" placeholder="class adding here! do red">
+		<span ng-class="f.focusClass">{{f.focusClass}}</span> <!-- this makes the class -->
+
+	</div>
+	
+
+
+	<div ng-controller="scopeme">
+		<h1 ng-bind="name"></h1>
+	</div>
+
+
+
+</body>
+</html>
