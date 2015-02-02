@@ -9,13 +9,22 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-	<section id="game-area" ng-controller="gameCtrl as g">
+	<article id="game-area" ng-controller="gameCtrl as g">
 		<h1 ng-bind="g.title"></h1>
-		
-		<h2>Turn {{g.turnNumber}}</h2>
 
-<!-- 		<p ng-repeat="colour in g.computerInstructions">{{colour}}</p>
- -->
+		
+		<h2 ng-show="g.isGameStarted">Turn {{ g.turnNumber }}</h2>
+
+		<!-- TODO: do some magic to make the colours the right colours -->
+		<!-- TODO: maybe make it a grid so it's easier to compare -->
+		<section id="instructions">
+			<p>Instructions: {{ g.computerInstructions }}</p>
+		</section>
+
+		<section id="players-choices">
+			<p>Player's choices: {{ g.playerSequence }}</p>
+		</section>
+
 		<div class="board">
 
 			<div class="cell top left red" ng-click="g.pickColour('red')"></div>
@@ -23,7 +32,8 @@
 			<div class="cell bottom left green" ng-click="g.pickColour('green')"></div>
 			<div class="cell bottom right yellow" ng-click="g.pickColour('yellow')"></div>
 		</div>
+		
 
-	</section>
+	</article>
 </body>
 </html>

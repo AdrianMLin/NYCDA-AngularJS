@@ -1,20 +1,24 @@
 angular.module('simon', [])
 
-.controller('boardCtrl', function(){
-	var self = this;
+// .controller('boardCtrl', function(){
+// 	var self = this;
 
 	
 
 
-})
+// })
 
 
-.controller('gameCtrl', function(){
+.controller('gameCtrl', function($timeout){
 	var self = this;
 
-	self.title = "Simon Game"
 
-	self.turnNumber = 1;
+	/////////////////////
+	/// binding stuff ///
+	/////////////////////
+
+	self.title = "Simon Game"
+	self.turnNumber = 0;
 
 	//from stack overflow
 	// function shuffle(o){ //v1.0
@@ -22,49 +26,78 @@ angular.module('simon', [])
 	//     return o;
 	// };
 
-
 	self.colourChoices = ['red', 'blue', 'green', 'yellow'];
 	// self.colourChoices = shuffle(self.colourChoices); //randomise
 
-	self.computerInstructions = [];
-	self.playerSequence = [];
+	self.computerInstructions = "";
+	self.playerSequence = "";
 
 
-
-
-
-
-	// gonna ng-repeat this
-	self.pickColour = function(){
-		var pickedColour;
-		// some magic here (THERE ARE UNDEFINEDS BEING PUSHED HERE)
-		self.playerSequence.push(pickedColour);
-
-		self.newTurn();
+	self.pickColour = function(colour){
+		self.playerSequence += colour + " ";
+		$timeout( checkCorrect, 450);
 	}
 
 
-	// new turn
-	self.newTurn = function(){
+	//////////////////////
+	/// back-end logic ///
+	//////////////////////
+
+	function checkCorrect(){
+		//had to use .split(" ") because it's not an array, and so .length() didn't work. also could not use array with ng repeat because ng-repeat cannot repeat identicals
+		if ( self.playerSequence.split(" ").length == self.computerInstructions.split(" ").length ) {
+			// console.log('same length!');
+			if ( areColoursEquivalent() == true ){
+				console.log('good job! next turn now!');
+				startNewTurn();			
+			} else if ( areColoursEquivalent() == false ) {
+				alert('Wrong!');
+				startNewGame();
+			}
+		}
+	}
+
+	//new turn
+	function startNewTurn() {
+		self.playerSequence = ""; //clear sequence
 		self.turnNumber += 1; //increment turn
-
-		self.newColour(); //new instruction
-
+		newColour(); //new instruction
 	}
 
-	//new colour for instruction
-	self.newColour = function(){
-
+	//getting a new colour for instructions
+	function newColour(){
 		var randomIndex = Math.floor( Math.random() * self.colourChoices.length );
-		var newColour = self.colourChoices[ randomIndex.valueOf() ];
-		self.computerInstructions.push( newColour );
+		var colour = self.colourChoices[ randomIndex.valueOf() ];
+		// var newColourHTML = "<span class='" + colour + "'>" + colour + "</span>";
+		self.computerInstructions += colour + " ";
 
-		console.log("randomised computer instrucitons: " + self.computerInstructions);
+		// console.log("randomised computer instrucitons: " + self.computerInstructions);
+	}
+
+	//checking if colours are equivalent
+	function areColoursEquivalent(){
+		return self.computerInstructions == self.playerSequence;
+	}
+
+	//start new game if you lose
+	function startNewGame() {
+		window.location.reload();
 	}
 
 
 
-})
+
+	/////////////////////////
+	///	Starting the game ///
+	/////////////////////////
+
+	startNewTurn();
+
+
+
+
+});
+
 
 
 /* 
