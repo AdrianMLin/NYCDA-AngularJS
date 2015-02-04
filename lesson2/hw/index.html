@@ -12,20 +12,22 @@
 	<article id="game-area" ng-controller="gameCtrl as g">
 		<h1 ng-bind="g.title"></h1>
 		<p>Instructions go here. Ready? Click button to start</p>
-		
+
+
 		<button ng-click="g.startGame()" ng-if="!g.isGameStarted">Start Game</button>
 
 		
 		<h2 ng-show="g.isGameStarted">Turn {{ g.turnNumber }}</h2>
 
-		<!-- TODO: do some magic to make the colours the right colours -->
+
 		<!-- TODO: maybe make it a grid so it's easier to compare -->
+
 		<section id="computer-instructions">
-			<p>Instructions: <span ng-hide="g.didInstructionsFlash">{{ g.computerInstructions }}</span></p>
+			<p>Instructions: <span ng-hide="g.didInstructionsFlash" ng-class="colour" ng-repeat="colour in g.computerInstructionsArray track by $index">{{ colour }} </span> </p>	
 		</section>
 
 		<section id="players-choices">
-			<p>Player's choices: {{ g.playerSequence }}</p>
+			<p>Player's choices: <span ng-class="colour" ng-repeat="colour in g.playerSequenceArray track by $index">{{ colour }} </span></p>
 		</section>
 
 		<div class="board">
