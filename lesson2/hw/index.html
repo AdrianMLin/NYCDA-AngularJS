@@ -11,14 +11,17 @@
 <body>
 	<article id="game-area" ng-controller="gameCtrl as g">
 		<h1 ng-bind="g.title"></h1>
+		<p>Instructions go here. Ready? Click button to start</p>
+		
+		<button ng-click="g.startGame()" ng-if="!g.isGameStarted">Start Game</button>
 
 		
 		<h2 ng-show="g.isGameStarted">Turn {{ g.turnNumber }}</h2>
 
 		<!-- TODO: do some magic to make the colours the right colours -->
 		<!-- TODO: maybe make it a grid so it's easier to compare -->
-		<section id="instructions">
-			<p>Instructions: {{ g.computerInstructions }}</p>
+		<section id="computer-instructions">
+			<p>Instructions: <span ng-hide="g.didInstructionsFlash">{{ g.computerInstructions }}</span></p>
 		</section>
 
 		<section id="players-choices">

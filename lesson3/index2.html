@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="thisApp">
+<head>
+	<meta charset="UTF-8">
+	<title>index2</title>
+	<script src="./angular.js"></script>
+	<script src="./app2.js"></script>
+</head>
+<body ng-app="app">
+	<h1>lecture 3</h1>
+	<div ng-controller="mainCtrl as m">
+
+
+		<div my-user-edit-directive></div>
+		<div my-user-edit-directive></div>
+		<div my-user-edit-directive></div>
+		<div test-test></div>
+		
+		<ul>
+			<li>
+				<div ng-show"isDisplayingUserOne">
+					{{m.userOne.lastName}}, {{m.userOne.firstName}}
+					<button ng-click"m.onEditAction(m.userOne)">Edit</button>
+				</div>
+				<div ng-hide="isDisplayingUserOne">
+					<input type="text" ng-model="m.userOne.firstName">
+				</div>
+			</li>
+			<li>
+				{{m.userTwo.lastName}}, {{m.userTwo.firstName}}
+				<button ng-click"onEditAction(m.userTwo)">Edit</button>
+			</li>
+			<li>
+				{{m.userThree.lastName}}, {{m.userThree.firstName}}
+				<button ng-click"onEditAction(m.userThree)">Edit</button>
+			</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

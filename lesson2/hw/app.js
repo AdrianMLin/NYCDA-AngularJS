@@ -1,9 +1,24 @@
+// var COLORS = {
+// 	BLUE: {
+// 		css: 'blue'
+// 	},
+// 	green: {
+
+// 	}
+
+// 	red: {
+
+// 	},
+
+
+
+
+// }
+
 angular.module('simon', [])
 
 // .controller('boardCtrl', function(){
 // 	var self = this;
-
-	
 
 
 // })
@@ -12,12 +27,14 @@ angular.module('simon', [])
 .controller('gameCtrl', function($timeout){
 	var self = this;
 
+	// $scope.currentSelection = COLORS.BLUE;
+
 
 	/////////////////////
 	/// binding stuff ///
 	/////////////////////
 
-	self.title = "Simon Game"
+	self.title = "Simon Game";
 	self.turnNumber = 0;
 
 	//from stack overflow
@@ -31,17 +48,33 @@ angular.module('simon', [])
 
 	self.computerInstructions = "";
 	self.playerSequence = "";
-
+	self.isGameStarted = false;
+	self.didInstructionsFlash = false;
 
 	self.pickColour = function(colour){
-		self.playerSequence += colour + " ";
-		$timeout( checkCorrect, 450);
+
+		if (self.isGameStarted == true ) {
+
+			// this.myArray.push({color: colour})
+			self.playerSequence += colour + " ";
+			$timeout( checkCorrect, 450);
+		} else {
+			alert("Press the 'Start Game' button to start!");
+		}
+	}
+
+	self.startGame = function(){
+		if ( self.isGameStarted == false ) { //if-statement just in case the button doesn't disappear for some reason
+			self.isGameStarted = true;
+			startNewTurn();
+		}
 	}
 
 
 	//////////////////////
 	/// back-end logic ///
 	//////////////////////
+
 
 	function checkCorrect(){
 		//had to use .split(" ") because it's not an array, and so .length() didn't work. also could not use array with ng repeat because ng-repeat cannot repeat identicals
@@ -52,16 +85,26 @@ angular.module('simon', [])
 				startNewTurn();			
 			} else if ( areColoursEquivalent() == false ) {
 				alert('Wrong!');
-				startNewGame();
+				refresh();
 			}
 		}
 	}
 
 	//new turn
 	function startNewTurn() {
+		// resetting the disappearing instructions;
+		newColour(); //new instruction
+		self.didInstructionsFlash = false;
+		var time = 500 + self.playerSequence.split(" ").length * 150; // time increases 200 for each new colour from a base of 500.
+		
+		$timeout( function(){
+			self.didInstructionsFlash = true;
+		}, time );
+
+		//resetting the player sequence and onscreen data;
 		self.playerSequence = ""; //clear sequence
 		self.turnNumber += 1; //increment turn
-		newColour(); //new instruction
+
 	}
 
 	//getting a new colour for instructions
@@ -80,19 +123,9 @@ angular.module('simon', [])
 	}
 
 	//start new game if you lose
-	function startNewGame() {
+	function refresh() {
 		window.location.reload();
 	}
-
-
-
-
-	/////////////////////////
-	///	Starting the game ///
-	/////////////////////////
-
-	startNewTurn();
-
 
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="showNameApp">
+<head>
+	<meta charset="UTF-8">
+	<title>show name app</title>
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<div ng-controller="mainCtrl as m">
+		
+
+		<div ng-repeat="user in m.users">
+			<input type="radio" name="radioUser" ng-value="user" ng-model="m.selectedUser"> {{user.name}}
+		</div>
+
+		<input type="text" ng-model="m.selectedUser.name">
+
+	</div>
+	
+</body>
+</html>
