@@ -15,10 +15,18 @@ angular.module('thisApp', [])
 			myScopeFunction: '&',
 			myScopeReadMeOnlyVariable: "@"
 		},
-		controller: 'MyDirectiveController'
+		
+
+		controller: 'directiveController',
+		controllerAs: 'd',
+		bindToController: true, // to bind it
+
+
+
 		link: function(scope, element, attributes) {
 			console.log(attributes);
 		}
+		transclude: true
 
 	}
 })

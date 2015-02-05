@@ -1,0 +1,33 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture 3</title>
+  <script src="nglib/angular.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+  <body ng-app="myApp">
+    <h1>Lecture 3</h1>
+    <div ng-controller="MyCtrl1 as ctrl">
+
+      <div my-user-edit-directive current-user="ctrl.userOne" my-scope-function="ctrl.testFunction()"  my-scope-read-only-variable="{{ctrl.userOne}}"></div>
+
+      <div my-user-edit-directive current-user="ctrl.userTwo" my-scope-function="ctrl.testFunction()"  my-scope-read-only-variable="{{ctrl.userOne}}"></div>
+
+      <div my-user-edit-directive current-user="ctrl.userThree" my-scope-function="ctrl.testFunction()"  my-scope-read-only-variable="{{ctrl.userOne}}"></div>
+
+      </div>
+
+
+
+<!--       <ul>
+        <li>
+
+        </li>
+        <li>{{ctrl.userTwo.lastName}}, {{ctrl.userTwo.firstName}}<button ng-click="onEditAction(ctrl.userTwo)">Edit</button></li>
+        <li>{{ctrl.userThree.lastName}}, {{ctrl.userThree.firstName}}<button ng-click="onEditAction(ctrl.userThree)">Edit</button></li>
+      </ul> -->
+
+    </div>
+  </body>
+</html>

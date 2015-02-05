@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script>
+
+	<style>
+		.selection {
+			display: inline-block;
+			margin-right: 5px;
+		}
+		.red {
+			background-color: red;
+		}
+		.blue {
+			background-color: blue;
+		}
+		.green {
+			background-color: green;
+		}
+		.yellow {
+			background-color: yellow;
+		}
+
+		.font-red {
+			color: red;
+		}
+		.font-blue {
+			color: blue;
+		}
+		.font-green {
+			color: green;
+		}
+		.font-yellow {
+			color: yellow;
+		}
+	</style>
+</head>
+<body ng-app="app" ng-controller="ctrl as m" ng-class="m.currentSelection.bodyColor"> <!-- sets background to current selection, which is defined on the view inputs -->
+	<h1>lecture 4</h1>
+
+	<div class="selection">
+		<input type="radio" name="selection" ng-value="m.COLOR_THEME_VALUES.RED" ng-model="m.currentSelection"> {{ m.COLOR_THEME_VALUES.RED.displayValue }}
+	</div>
+
+	<div class="selection">
+		<input type="radio" name="selection" ng-value="m.COLOR_THEME_VALUES.BLUE" ng-model="m.currentSelection"> {{ m.COLOR_THEME_VALUES.BLUE.displayValue }}
+	</div>
+
+	<div class="selection">
+		<input type="radio" name="selection" ng-value="m.COLOR_THEME_VALUES.GREEN" ng-model="m.currentSelection"> {{ m.COLOR_THEME_VALUES.GREEN.displayValue }}
+	</div>
+
+	<div class="selection">
+		<input type="radio" name="selection" ng-value="m.COLOR_THEME_VALUES.YELLOW" ng-model="m.currentSelection"> {{ m.COLOR_THEME_VALUES.YELLOW.displayValue }}
+	</div>
+
+
+	<p ng-class="m.currentSelection.fontColor"> ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum </p>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<div ng-show="isDisplaying">
+            {{currentUser.lastName}}, {{currentUser.firstName}}<button ng-click="onEditAction()">Edit</button>
+</div>
+<div ng-hide="isDisplaying">
+    <input type="text" ng-model="currentUser.firstName">
+	<button ng-click="onCancelAction()">Cancel</button>
+</div>
