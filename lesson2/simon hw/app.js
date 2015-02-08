@@ -1,30 +1,7 @@
-// var COLORS = {
-// 	BLUE: {
-// 		css: 'blue'
-// 	},
-// 	green: {
-
-// 	}
-
-// 	red: {
-
-// 	},
-
-
-
-
-// }
-
 angular.module('simon', [])
 
-// .controller('boardCtrl', function(){
-// 	var self = this;
 
-
-// })
-
-
-.controller('gameCtrl', function($timeout){
+.controller('gameCtrl', function( $timeout ){
 	var self = this;
 
 	// $scope.currentSelection = COLORS.BLUE;
@@ -36,6 +13,7 @@ angular.module('simon', [])
 
 	self.title = "Simon Game";
 	self.turnNumber = 0;
+
 
 
 	//from stack overflow
