@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact List</title>
+	<link rel="stylesheet" href="./style.css">
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script>
+</head>
+<body ng-app="contactList">
+	<form id="add-contact" ng-controller="FormController as f">
+		<input type="text" name="firstName" placeholder="first name">
+		<input type="text" name="lastName" placeholder="last name">
+		<input type="text" name="description" placeholder="description">
+		<input type="tel" name="telephoneNumber" placeholder="telephone number">
+		<input type="email" name="email" placeholder="email">
+		<button ng-click="f.addContact()">Add Contact</button>
+	</form>
+
+	<article id="contact-list"></article>
+	
+</body>
+</html>
