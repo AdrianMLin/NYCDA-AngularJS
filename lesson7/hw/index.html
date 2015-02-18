@@ -9,15 +9,21 @@
 </head>
 <body ng-app="contactList">
 	<form id="add-contact" ng-controller="FormController as f">
-		<input type="text" name="firstName" placeholder="first name">
-		<input type="text" name="lastName" placeholder="last name">
-		<input type="text" name="description" placeholder="description">
-		<input type="tel" name="telephoneNumber" placeholder="telephone number">
-		<input type="email" name="email" placeholder="email">
+		<input type="text" name="firstName" placeholder="first name" ng-model="f.newContact.firstName">
+		<input type="text" name="lastName" placeholder="last name" ng-model="f.newContact.lastName">
+		<input type="text" name="description" placeholder="description" ng-model="f.newContact.description">
+		<input type="tel" name="telephoneNumber" placeholder="telephone number" ng-model="f.newContact.telephoneNumber">
+		<input type="email" name="email" placeholder="email" ng-model="f.newContact.email">
+
 		<button ng-click="f.addContact()">Add Contact</button>
 	</form>
 
-	<article id="contact-list"></article>
+	<article id="contact-list">
+		<div ng-repeat="contact in contacts">
+			<div contact-item contact="contact"></div contact-item>
+		</div>
+
+	</article>
 	
 </body>
 </html>
