@@ -1,0 +1,42 @@
+This Assignment's main goal is to get you familiar with UI-Router, Custom Services, Factories and Directives.
+
+Main Objectives:
+
+Your main task is to create a contacts application that consists of two-views (two routes).  One view should display a list of contacts and the other view will allow the user to create a new contact by filling in some basic information and pressing an "Add Contact" button.  In order for the user to create a new contact there should be a text input for first and last name, description, phone number and email address.  Each view needs to have its own html template and controller.  Each page needs to have navigational links (like we did in class) that will direct the user to each view.
+
+The application needs to have the following angular elements:
+
+     Ui-Router with two routes (Required)
+
+     Custom Service for communicating between the two controllers. (Required)
+
+     At least one custom directive (you decide where and how you want to use it) (Required)
+
+     Possibly a factory depending on your implementation.  (Optional)
+
+     At least 3 test cases for your controllers (Required)
+
+ 
+
+Optional Advanced Task One:
+
+    Add an "Edit" button next to every contact in the list view.  When the user presses this button, the page needs to redirect the user to the second view which will have all the input text fields pre-populated with that contact's information.  The user will then have an option to edit the information and save it or cancel editing (the add button should not be visible while editing).  When they either cancel or save, the input fields should then clear out and the add button should be visible and any other buttons should disappear.  If the user makes any changes and then decides to cancel, that contact's information should not change in the list view.  You have to use the UI-Router and not the custom service to accomplish this. (read the ui-router docs here (Links to an external site.)).
+
+ 
+
+Optional Advanced Task Two:
+
+     Import the angular-spinner (Links to an external site.) module into your application and when user presses the "Add Contact" button, we should display a spinner for two seconds before clearing out the text inputs.  Make use of your bower.json file to import the module.  This will require you to do another "bower install" command before running "gulp serve".  The spinner should only be visible while it is spinning.  
+
+ 
+
+When you're done zip up your "src" file and upload it to Canvas.  
+
+ 
+
+As always guys if you have any questions please don't hesitate to email me at george@nycda.com
+
+ 
+
+Happy Coding!
+
