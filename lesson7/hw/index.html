@@ -5,25 +5,23 @@
 	<title>Contact List</title>
 	<link rel="stylesheet" href="./style.css">
 	<script src="./angular.js"></script>
+	<script src="./angular-ui-router.min.js"></script>
 	<script src="./app.js"></script>
 </head>
-<body ng-app="contactList">
-	<form id="add-contact" ng-controller="FormController as f">
-		<input type="text" name="firstName" placeholder="first name" ng-model="f.newContact.firstName">
-		<input type="text" name="lastName" placeholder="last name" ng-model="f.newContact.lastName">
-		<input type="text" name="description" placeholder="description" ng-model="f.newContact.description">
-		<input type="tel" name="telephoneNumber" placeholder="telephone number" ng-model="f.newContact.telephoneNumber">
-		<input type="email" name="email" placeholder="email" ng-model="f.newContact.email">
+<body ng-app="contactList" ng-controller="FullController as f">
 
-		<button ng-click="f.addContact()">Add Contact</button>
-	</form>
+	<div ui-view></div>
+	<a ui-sref="add-contact">add contact</a>
+	<a ui-sref="show-contact">show contact</a>
+	<!-- how do i get the states to show above these? -->
+	<!-- how do i remove scope from my state provider and have my show items go into the list in the stateprovider. should i even do this? -->
 
-	<article id="contact-list">
-		<div ng-repeat="contact in contacts">
-			<div contact-item contact="contact"></div contact-item>
-		</div>
 
-	</article>
+
+
+	
+
+
 	
 </body>
 </html>

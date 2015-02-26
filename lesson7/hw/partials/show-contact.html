@@ -1,0 +1,13 @@
+<h1>Show contact</h1>
+<hr/>
+<a ui-sref="show-contact.list">Show List</a>
+<div ui-view></div>
+
+<article id="contact-list">
+	<div ng-repeat="contact in f.contacts">
+
+		<div contact-item contact="contact">
+			
+		</div>
+	</div>
+</article>
